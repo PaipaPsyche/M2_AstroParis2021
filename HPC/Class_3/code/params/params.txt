@@ -1,0 +1,7 @@
+x_init          0.0
+x_end           10.0
+N_points        15
+x_split         1.5
+density_left    0.5
+density_right   0.9
+velocity        1.5
