@@ -1,0 +1,50 @@
+#RHESSI Flare 1
+date_ = [1,6,2013]
+timerange_st = [13,30,0]
+timerange_end = [13,50,0]
+
+#RHESSI Flare 2
+date_ = [19,10,2013]
+timerange_st = [13,24,0]
+timerange_end = [13,34,0]
+
+#RHESSI Flare 3
+date_ = [8,9,2012]
+timerange_st = [9,13,0]
+timerange_end = [9,25,0]
+
+#RHESSI Flare 4
+date_ = [6,11,2014]
+timerange_st = [11,35,0]
+timerange_end = [11,50,0]
+
+#RHESSI Flare 5
+date_ = [3,3,2014]
+timerange_st = [11,36,0]
+timerange_end = [11,50,0]
+
+#STIX Flare 1
+date_ = [8,5,2021]
+timerange_st = [18,20,0]
+timerange_end = [19,5,0]
+
+#STIX Flare 2
+date_ = [23,6,2021]
+timerange_st = [5,50,0]
+timerange_end = [7,10,0]
+
+#STIX Flare 3
+date_ = [9,5,2021]
+timerange_st = [13,40,0]
+timerange_end = [14,15,0]
+
+#STIX Flare 4
+date_ = [12,5,2021]
+timerange_st = [9,20,0]
+timerange_end = [9,40,0]
+
+#STIX Flare 5
+date_ = [7,5,2021]
+timerange_st = [18,40,0]
+timerange_end = [19,30,0]
+
