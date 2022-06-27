@@ -1,0 +1,23 @@
+         1                  !  F_St_Eq: state equation (1: T & nH constant, 2: isochoric, 3: isobaric)
+1.00E+04                    !  densh: Gas density (cm-3)
+    10.000                  !  tempr: Gas temperature (K)
+1.00E-17                    !  zeta: Cosmic rays ionization rate (s-1)
+       1.0                  !  rad: External radiaion field srength (ISRF)
+      10.0                  !  av: Depth into the cloud
+  -1.00e-0                  !  rop (ortho/para) (5.0e-5) (If < 0 => compute at T)
+     10.00                  !  tgr: Dust temperature
+   1.0e-02                  !  ratiog: mgrain / mgaz (Dust o gas mass ratio)
+   1.0e-05                  !  radgr: sqrt(rmin.rmax) - mean grain radius (cm)
+       3.0                  !  rhogr: Dust mass density (g cm-3)
+    0.0050                  !  h0: Maximum step size   (Myr)
+  20.0e+00                  !  tend: Final evolution time (Myr)
+!---------- Specific - See Doc - Do no change unless you know what you are doing ------------------
+ 0.3810316                  !  t_per: (Myr) - Estimated period, used for CH_A
+        01                  !  ks - Output every ks steps
+         0                  !  F_FFT  (1: Compute FFT)
+         0                  !  F_CH_A (1: Save data for chemistry analysis)
+     -1.00                  ! csco: See doc. Do no change for normal usage
+   -1.0000                  ! frnH: See doc. Do no change for normal usage
+  9.000e-5                  ! poc1: See doc. Do no change for normal usage
+   -1.0000                  ! poc2: See doc. Do no change for normal usage
+

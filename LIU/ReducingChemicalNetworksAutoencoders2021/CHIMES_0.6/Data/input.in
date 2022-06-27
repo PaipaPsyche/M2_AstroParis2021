@@ -1,0 +1,5 @@
+outdir: CHIMES_0.6/Data/
+outname: iterCorr
+---
+densh: 1.00E+04 1.00E+06 1.00E+08
+zeta: 1.00E-17  1.00E-15 1.00E-13
