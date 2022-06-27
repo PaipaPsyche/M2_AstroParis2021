@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # SOLAR ORBITER DATA ANALYSIS LAB
-# RPW - STIX
+# RPW - STIX========================
 # functionalities
 # RPW-----
 #   * create/plot psd from CDF
