@@ -1,5 +1,18 @@
 # -*- coding: utf-8 -*-
 
+# SOLAR ORBITER DATA ANALYSIS LAB
+# RPW - STIX
+# functionalities
+# RPW-----
+#   * create/plot psd from CDF
+#   * frequency drift analysis/ beam veloicty estimation
+# STIX -----------
+#    * spectrogram creation / bkg removal
+#    * spectrogram/lightcurve plotting
+#    * combined views of RW/STIX
+
+
+
 #package imports
 # UTILS
 import datetime as dt
