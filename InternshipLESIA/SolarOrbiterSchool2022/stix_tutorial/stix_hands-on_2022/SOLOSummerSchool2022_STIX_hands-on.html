@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    html {
+      line-height: 1.7;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 40em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin-top: 1.7em;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.7em;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1.7em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1.7em 0 1.7em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      font-style: italic;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      background-color: #f0f0f0;
+      font-size: 85%;
+      margin: 0;
+      padding: .2em .4em;
+    }
+    pre {
+      line-height: 1.5em;
+      padding: 1em;
+      background-color: #f0f0f0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin-top: 1.7em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border-bottom: 1px solid lightgray;
+      padding: 1em 3em 1em 0;
+    }
+    header {
+      margin-bottom: 6em;
+      text-align: center;
+    }
+    nav a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="stix-hands-on-session">STIX Hands-on session</h1>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-access">Data access</a>
+<ul>
+<li><a href="#data-types">Data types</a>
+<ul>
+<li><a href="#quicklook-data">Quicklook data</a></li>
+<li><a href="#science-data">Science data</a></li>
+</ul></li>
+<li><a href="#downloading-data">Downloading data</a>
+<ul>
+<li><a href="#quicklook-data-online">Quicklook data online</a></li>
+<li><a href="#quicklook-data-with-stixpy">Quicklook data with STIXpy</a></li>
+<li><a href="#level-1-data">Level-1 data</a></li>
+<li><a href="#preview-images">Preview images</a></li>
+<li><a href="#solar-orbiter-archive-soar">Solar Orbiter archive (SOAR)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#read-open-data-files-idl">Read / open data files (IDL)</a></li>
+<li><a href="#read-open-data-files-python">Read / open data files (Python)</a></li>
+<li><a href="#imaging">Imaging</a>
+<ul>
+<li><a href="#creating-images-from-level-1-data-idl">Creating images from level-1 data (IDL)</a></li>
+<li><a href="#plotting-images-with-idl">Plotting images with IDL</a></li>
+<li><a href="#plotting-images-with-python">Plotting images with Python</a></li>
+</ul></li>
+<li><a href="#spectroscopy-idl">Spectroscopy (IDL)</a></li>
+</ul>
+<h2 id="introduction">Introduction <a href="#content">↑</a></h2>
+<p>This document has been prepared for the Solar Orbiter Summer School held in Sète in 2022. Last update: 27 May 2022.</p>
+<h3 id="important">Important <a href="#content">↑</a></h3>
+<p>The STIX data is still preliminary data at this stage: the final data format is being finalized. The final data products will be available both in the STIX data center and the Solar Orbiter Archive (SOAR) at a later time. The analysis software is also under development.<br />
+<strong>The tools presented in this tutorial are useful to find and have a first look at the STIX data: for publication-worthy analysis, it is strongly advised to contact the STIX team to discuss the data and analysis you are interested in.</strong></p>
+<h3 id="requirements">Requirements <a href="#content">↑</a></h3>
+<p>IDL: - SolarSoft <a href="https://www.lmsal.com/solarsoft/">https://www.lmsal.com/solarsoft/</a> with the so/stix branch and the ospex package.</p>
+<p>Python: - sunpy - stixpy <a href="https://stixpy.readthedocs.io/en/latest/quickstart.html">https://stixpy.readthedocs.io/en/latest/quickstart.html</a></p>
+<h3 id="tutorial">Tutorial <a href="#content">↑</a></h3>
+<p>This document is a tutorial focusing on finding and analyzing STIX data for a flare that was observed on 1st November 2021, while Solar Orbiter was very close to the Sun-Earth line.</p>
+<blockquote>
+<p>Actions items for the tutorial are displayed in quote boxes like this one.</p>
+</blockquote>
+<h2 id="data-access">Data access <a href="#content">↑</a></h2>
+<h3 id="data-types">Data types <a href="#content">↑</a></h3>
+<h4 id="quicklook-data">Quicklook data <a href="#content">↑</a></h4>
+<p>Quicklook data are downloaded frequently and include the X-ray count rate seen by STIX in 5 energy bands, as well as the coarse flare location when available. Quicklook data, and housekeeping data, can be visualized and downloaded from the STIX data center: <a href="https://datacenter.stix.i4ds.net/view/plot/lightcurves">https://datacenter.stix.i4ds.net/view/plot/lightcurves</a>. The online quicklook lightcurve visualisation offers several tools: correction of time shift due to the difference of radial distance between Solar Orbiter and Earth, visualisation of the GOES lightcurves, the EPD quicklooks, the AIA and EUI data, an estimation of the GOES class of the flares seen by STIX…</p>
+<p>Other quicklook data include the trigger accumulator counts, the rate control regime, variance, counts in the background monitor, and raw spectrograms.</p>
+<h4 id="science-data">Science data <a href="#content">↑</a></h4>
+<p>The science data files can be found and downloaded from the STIX data center: <a href="https://datacenter.stix.i4ds.net/view/list/bsd">https://datacenter.stix.i4ds.net/view/list/bsd</a>. The two main types of data files currently available are the L1 data or “pixel data”, and the L4 data or “spectrogram data” (see below). On the STIX website, you can use the top menu to select the data type and the time interval to look for data files. A list of data files will appear, and at the end of each row, two buttons are present to either preview or download the file. By clicking on the preview button, one can have an overview of the data in the file.</p>
+<h5 id="pixel-data-and-spectrogram-data">Pixel data and spectrogram data</h5>
+<p>Pixel data files (L1) contain X-ray count rates for each pixels of each detector of STIX. They can be used for imaging and spectroscopy.<br />
+Spectrogram data files (L4) contain the summed count rates over all pixels of the 30 detectors which are part of the imaging system (excluding the coarse flare locator detector and the background monitor detector). Since we do not have the count rates of individual pixels, these files cannot be used for imaging.</p>
+<h5 id="flare-data-and-background-data">Flare data and background data</h5>
+<p>L4 data (spectrogram) is available for all flares observed by STIX, which means that for all observed flares one can in principle do spectroscopy (depending on the counting statistics) at the highest cadence available (that is varying with the counts).</p>
+<p>Only a selection of L1 files (pixels) is available because of telemetry constraints. For smaller flares we typically bin in time, for larger flares, instead, we typically have (at least) the nonthermal burst at the highest cadence possible, while the thermal decay not. But this is not the rule, it may well be that we have some medium/large flares at the full cadence for the entire duration. <strong>For this reason we strongly encourage people to use the following form: <a href="https://datacenter.stix.i4ds.net/view/datareq/form">https://datacenter.stix.i4ds.net/view/datareq/form</a> to put data requests to the STIX team indicating whether they have particular flares that they would like to have at the highest cadence possible (for L1 files).</strong></p>
+<p>The list of the STIX flares can be found on the STIX website: <a href="https://datacenter.stix.i4ds.net/view/flares/list">https://datacenter.stix.i4ds.net/view/flares/list</a></p>
+<p>About once a week, a background data file is downloaded as well. This background data can be used in the analysis (imaging and spectroscopy) of flare data.</p>
+<h3 id="downloading-data">Downloading data <a href="#content">↑</a></h3>
+<p>In this section of the tutorial we present how to find and download data from the STIX Data Center, or using the STIXpy package (python).</p>
+<blockquote>
+<p><strong><em>Goal of this tutorial: Find and download flare data for the M-class flare that happened on Nov 1st 2021 around 1:30 UT, and the associated background file</em></strong></p>
+</blockquote>
+<h4 id="quicklook-data-online">Quicklook data online <a href="#content">↑</a></h4>
+<p>Quicklook data include lightcurves in 5 energy bands and flare locations as seen by Solar Orbiter.</p>
+<blockquote>
+<p>Go to the STIX website <a href="https://datacenter.stix.i4ds.net/view/plot/lightcurves">https://datacenter.stix.i4ds.net/view/plot/lightcurves</a>, enter the start time (2021/11/01 00:00) and a duration of 5 hours.</p>
+</blockquote>
+<p>You should obtain the plot below:</p>
+<figure>
+<img src="Hands-on_figures/QL_lightcurves.PNG" alt="Quicklook lightcurves" /><figcaption aria-hidden="true">Quicklook lightcurves</figcaption>
+</figure>
+<blockquote>
+<p>On the same page, select the location tab, two more plots should appear below the lightcurves.</p>
+</blockquote>
+<p>The plot on the left should be the following:</p>
+<p><img src="Hands-on_figures/QL_cfl.PNG" alt="STIX coarse flare location" width="300"/></p>
+<p>On this plot we can see that the flare site is above the solar limb as seen from Solar Orbiter.</p>
+<p>One might wonder where Solar Orbiter was at the time of the observation: this information can also be found on the STIX Data Center.</p>
+<blockquote>
+<p>Click on the “Ancillary data browser” tab in the left menu of the STIX website. Find the position of the spacecraft at the time of the flare.</p>
+</blockquote>
+<p>After entering the date for the observation, several plots showing the position of Solar Orbiter should appear, inclusing the following one:</p>
+<p><img src="Hands-on_figures/Ancillary_positions.PNG" alt="Solar Orbiter locations" width="300"/></p>
+<p>We can see that for this event, Solar Orbiter was very close to the Sun-Earth line.</p>
+<h4 id="quicklook-data-with-stixpy">Quicklook data with STIXpy <a href="#content">↑</a></h4>
+<p>Quicklook data can be downloaded and plotted using <a href="https://stixpy.readthedocs.io/en/latest/">STIXpy</a>.</p>
+<blockquote>
+<p>Follow the example below to download and plot the same quicklook lightcurves as the ones we just plotted online.</p>
+</blockquote>
+<p>Search for the data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sunpy.net <span class="im">import</span> Fido, attrs <span class="im">as</span> a</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stixpy.net.client <span class="im">import</span> STIXClient</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> Fido.search(a.Time(<span class="st">&#39;2021-11-01 00:00&#39;</span>, <span class="st">&#39;2021-11-01 00:05&#39;</span>), a.Instrument.stix,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                    a.stix.DataProduct.ql_lightcurve)</span></code></pre></div>
+<p>Downloading the data:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> Fido.fetch(query)</span></code></pre></div>
+<p>Note that the data downloaded covers one full day.</p>
+<p>Plotting the lightcurves:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sunpy.timeseries <span class="im">import</span> TimeSeries</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stixpy <span class="im">import</span> timeseries</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sunpy.time <span class="im">import</span> TimeRange</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>time_range <span class="op">=</span> TimeRange(<span class="st">&#39;2021-11-01 00:00&#39;</span>, <span class="st">&#39;2021-11-01 05:00&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ql_lightcurves <span class="op">=</span> TimeSeries(files)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>trunc_ql_lightcurves <span class="op">=</span> ql_lightcurves.truncate(time_range)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>trunc_ql_lightcurves.peek()</span></code></pre></div>
+<p>This will produce the following plot</p>
+<p><img src="Hands-on_figures/stixpy_figure1.PNG" alt="stixpy QL lightcurves" width="350"/></p>
+<h4 id="level-1-data">Level-1 data <a href="#content">↑</a></h4>
+<p>Science data can be found in the “Science data browser” of the STIX website (<a href="https://datacenter.stix.i4ds.net/view/list/bsd">https://datacenter.stix.i4ds.net/view/list/bsd</a>).</p>
+<blockquote>
+<p>Go to the Science data browser, enter the time range for the flare (2021/11/01 from 00:00 to 03:00).</p>
+</blockquote>
+<p>You should see a list of 5 files:<br />
+<img src="Hands-on_figures/science_list.PNG" alt="List of science files" /></p>
+<blockquote>
+<p>Click on the “Preview” button for the first file in the list, to check the data in the corresponding file.</p>
+</blockquote>
+<p>In the “preview” tab above the list, a series of plots will appear, the two first ones being spectrograms:</p>
+<p><img src="Hands-on_figures/science_preview_L4.PNG" /></p>
+<blockquote>
+<p>Look at the count rate spectrogram, do you notice anything?</p>
+</blockquote>
+<p>There is a continuous signal at energies between 28-36 keV. This is produced by the calibration source and therefore is part of the background signal for our observations.</p>
+<p>The data file can then be downloaded by clicking on the download icon next to “L1A FITS” in the upper right corner of the page. You can find the list of files in the tab “Science data”. The first data file is a spectrogram (L4) file, we will now check a pixel (L1) file.</p>
+<blockquote>
+<p>If you preview the third file in the list (file #5316), the corresponding preview starts with these plots:</p>
+</blockquote>
+<p><img src="Hands-on_figures/science_preview_L1.PNG" /></p>
+<p>In this case, the total counts of individual pixels is represented and the coarse flare location is given.</p>
+<p>If you scroll down, you will see a tab called “Preview images”. We will cover those in the <a href="#preview-images">next section</a>.</p>
+<blockquote>
+<p>Go back to the list of science files. Download the two files that we just previewed: files number #5197 and #5316.</p>
+</blockquote>
+<p><strong>Finding and downloading a background file</strong></p>
+<p>In the imaging and spectroscopic analysis of STIX data, a background file can be used to substract the count background measured during quiet times (no flares). A background file is downloaded from the STIX observations about once a week.</p>
+<blockquote>
+<p>In the science data, set the data type to L1, set the start date one week before the flare, and the end date one week after the flare. Then sort the results by decreasing total duration, as background files tend to be long duration (e.g. 6000 seconds). Find the file with the description “BKG - Nov 2021, W1” (#5238) which was taken a few hours after the flare we are considering. Preview and download the file.</p>
+</blockquote>
+<p>Note that we are looking for files with description “BKG - Month, week” or “BKG quiet”. The files with description “BKG det.” contain data from the background monitor detector, which is different from what we are looking for here.</p>
+<h4 id="preview-images">Preview images <a href="#content">↑</a></h4>
+<p>When previewing a L1 pixel file in the STIX Data Center, some preview images can be available, such as displayed below.</p>
+<p><img src="Hands-on_figures/Preview_images.PNG" /></p>
+<p>The level 1 data or the individual images presented here can be downloaded using the small arrow icon labelled “FITS” in the bottom left corner. A PDF version of the plots is also available. IDL and Python scripts to produce (IDL) and plot (IDL, Python) the images are available by clicking on the icons in the bottom right corner. More details about imaging in the <a href="#imaging">imaging section</a> below.</p>
+<blockquote>
+<p>Find again the L1 pixel file that you downloaded before (#5316), preview the data, choose a preview image and download it.</p>
+</blockquote>
+<h4 id="solar-orbiter-archive-soar">Solar Orbiter archive (SOAR) <a href="#content">↑</a></h4>
+<p>STIX data are not yet available in the Solar Orbiter archive (SOAR).</p>
+<h2 id="read-open-data-files-idl">Read / open data files (IDL) <a href="#content">↑</a></h2>
+<blockquote>
+<p><strong><em>Goal of the tutorial: plot STIX lightcurves from a science data file with IDL</em></strong></p>
+</blockquote>
+<p>We will use the pixel file downloaded earlier and open it to plot lightcurves.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_dir = &#39;data/&#39; ; change this to the path to the STIX data on your machine</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>path_sci_file = data_dir+&#39;solo_L1A_stix-sci-xray-l1-2111010024_20211101T010049-20211101T023158_017507_V01.fits&#39;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>; read the data</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data = stx_read_fits( path_sci_file, &#39;data&#39;, header, silent=1)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>counts = data.counts</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>help, data.counts</span></code></pre></div>
+<p>This will give:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;Expression&gt;    DOUBLE    = Array[32, 12, 32, 503]</span></code></pre></div>
+<p>This array countains the number of counts in 503 time intervals, in 32 energy bins, registered in each of the 12 pixels of the 32 detectors of STIX.</p>
+<p>We will start by summing all pixels together to look at the counts in each detector:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>det_counts = total(counts,2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>; choose the second energy band</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>e = 2</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>; plot the lightcurve for each detector in this energy band</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>loadct,5</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plot, data.time, det_counts[e,0,*], yr=minmax(det_counts[e,*,*]), color=0, background=255, charth=2, charsi=2, thick=2, xthick=2, ythick=2</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>FOR k=0,31 DO oplot, data.time, det_counts[e,k,*], color=5*(k+1), thick=2</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>al_legend, string(indgen(32)), box=0, textcolor = 5*(indgen(32)+1), /right, charth=2, chars=2</span></code></pre></div>
+<p>We can see on this plot that the number of counts varies from one detector to another. Detector #8 is the “background” detector, detector #9 is the coarse flare locator. When the attenuator comes in front of the detectors, it does not cover the background detector - therefore this detector can be used to look at un-attenuated lightcurves.</p>
+<p><img src="Hands-on_figures/idl_counts_per_detectors.PNG" alt="" width="350"/></p>
+<p>In the data structure, the time is in seconds since the start of the observation. Energy bins are not labelled. These pieces of information can be retrieved as shown below.</p>
+<p>Read energy information:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>;read energy information</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>energy = stx_read_fits(path_sci_file, &#39;energies&#39;, energy_header, mversion_full = mversion_full)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>; create energy labels</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>energy_low_str = strtrim(string(energy.e_low),2)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>energy_high_str = strtrim(string(energy.e_high),2)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>; getting rid of zeros</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>e_low_temp = strsplit(energy_low_str,&#39;.&#39;,/extract)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>e_low_str = energy_low_str</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>FOR k=0, n_elements(e_low_str)-1 DO e_low_str[k] = e_low_temp[k,0]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>e_high_temp = strsplit(energy_high_str,&#39;.&#39;,/extract)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>e_high_str = energy_high_str</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>FOR k=0, n_elements(e_high_str)-1 DO e_high_str[k] = e_high_temp[k,0]</span></code></pre></div>
+<p>Read the header to get time and location of the spacecraft for this observation, along with other useful information.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>; read the header, containing info on time and position of the spacecraft</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>!null = stx_read_fits(path_sci_file, 0, primary_header, mversion_full = mversion_full)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>; extract some information</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>date_obs = anytim(sxpar(primary_header,&#39;DATE_OBS&#39;))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>date_beg = anytim(sxpar(primary_header,&#39;DATE_BEG&#39;))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>date_avg = anytim(sxpar(primary_header,&#39;DATE_AVG&#39;))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>date_end = anytim(sxpar(primary_header,&#39;DATE_END&#39;))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>rsun_arc = sxpar(primary_header,&#39;RSUN_ARC&#39;) ; solar radius in arcsec</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>dsun_obs = sxpar(primary_header,&#39;DSUN_OBS&#39;) ; distance Sun-spacecraft in meters</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>ear_tdel = sxpar(primary_header,&#39;EAR_TDEL&#39;) ; light travel time from Sun to Earth - light travel time from Sun to Spacecraft in seconds</span></code></pre></div>
+<p>Calculate a time array</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>; calculate a time array</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data_time = date_beg + data.time</span></code></pre></div>
+<p>Now we can plot the same data as before but with time labelled in UT:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>utplot, data_time, det_counts[e,0,*], yr=minmax(det_counts[e,*,*]), color=0, background=255, charth=2, charsi=2, thick=2, xthick=2, ythick=2</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>FOR k=0,31 DO outplot, data_time, det_counts[e,k,*], color=5*(k+1), thick=2</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>al_legend, string(indgen(32)), box=0, textcolor = 5*(indgen(32)+1), /right, charth=2, chars=2</span></code></pre></div>
+<p><img src="Hands-on_figures/idl_counts_per_detectors_time.PNG" alt="" width="350"/></p>
+<p>The data displayed here is in counts. In the following we use the integration time to calcualte the count rates and we plot the count rates in all energy bands, summed over all detectors and all pixels.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>; sum counts from all detectors together</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sum_counts = total(det_counts,2)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>; calculate count rates</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>count_rates = sum_counts</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>FOR k=0, 31 DO count_rates[k,*] = sum_counts[k,*]/data.timedel</span></code></pre></div>
+<p>Plot the count rates in all energy bands:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>utplot, data_time, count_rates[1,*], yr=[1,max(count_rates)], /ylog, color=0, background=255, charth=2, charsi=2, thick=2, xthick=2, ythick=2, ytitle=&#39;counts/sec&#39;, title=&#39;summed over all detectors and pixels&#39;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>FOR k=1,30 DO outplot, data_time, count_rates[k,*], color=5*(k+1), thick=2</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>al_legend, e_low_str[1:30]+&#39;-&#39;+e_high_str[1:30]+&#39; keV&#39;, box=0, textcolor = 5*(indgen(30)+2), /right, charth=2, chars=1.4</span></code></pre></div>
+<p><img src="Hands-on_figures/idl_count_rates_all_energies.PNG" alt="" width="350"/></p>
+<p>To highlight the low and high energy behavior in the lightcurves, we produce two lightcurves which are the sum of a few energy bands each:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>; sum over some energies</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>low_energy = total(count_rates[2:3,*],1)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>high_energy = total(count_rates[11:17,*],1)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>; plot count rates in low and high energy bands</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>utplot, data_time, low_energy, yr=[10,max(count_rates)], /ylog, color=0, background=255, charth=2, charsi=2, thick=2, xthick=2, ythick=2, ytitle=&#39;counts/sec&#39;, title=&#39;summed over all detectors and pixels&#39;</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>outplot, data_time, low_energy, color=110, thick=2</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>outplot, data_time, high_energy, color=50, thick=2</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>al_legend, [e_low_str[2]+&#39;-&#39;+e_high_str[3]+&#39; keV&#39;,e_low_str[11]+&#39;-&#39;+e_high_str[17]+&#39; keV&#39;], box=0, textcolor = [110,50], /right, charth=2, chars=1.7</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>; indicate the time interval of interest for imaging and spectroscopy</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>t1 = anytim(&#39;2021/11/01 01:28&#39;)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>outplot, [t1,t1], [10, 1d4], linestyle=2, thick=2, color=0</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>t2 = anytim(&#39;2021/11/01 01:29&#39;)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>outplot, [t2,t2], [10, 1d4], linestyle=2, thick=2, color=0</span></code></pre></div>
+<p><img src="Hands-on_figures/idl_count_rates_low_high.PNG" alt="" width="350"/></p>
+<blockquote>
+<p><strong><em>Extra challenge</em></strong><br />
+Select a flare for which the attenuator was inserted in from the of the detectors (you can check what happened on 28 Oct 2021 for instance!). Find a pixel data file and plot the lightcurves for the imaging detectors, and the lightcurves for the background detector.</p>
+</blockquote>
+<h2 id="read-open-data-files-python">Read / open data files (Python) <a href="#content">↑</a></h2>
+<blockquote>
+<p><strong><em>Tutorial: plot STIX lightcurves from a science data file with Python</em></strong></p>
+</blockquote>
+<p>Open the fits file and read the data</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> astropy.io <span class="im">import</span> fits</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change the next line to the path to the STIX data on your machine</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">&#39;data/&#39;</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>fits_filename <span class="op">=</span> data_dir<span class="op">+</span><span class="st">&#39;solo_L1A_stix-sci-xray-l1-2111010024_20211101T010049-20211101T023158_017507_V01.fits&#39;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># open the fits file</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>hdulist <span class="op">=</span> fits.<span class="bu">open</span>(fits_filename)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> hdulist[<span class="dv">0</span>].header</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># parse time which is given as seconds since the beginning of the observation</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>time_sod <span class="op">=</span> hdulist[<span class="dv">2</span>].data.field(<span class="st">&#39;time&#39;</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># parse counts - (time, 32 detectors, 12 pixels, 32 energy bins)</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> hdulist[<span class="dv">2</span>].data.field(<span class="st">&#39;counts&#39;</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># produce energy labels</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>energy_labels <span class="op">=</span> [<span class="bu">str</span>(x)<span class="op">+</span><span class="st">&#39;-&#39;</span><span class="op">+</span><span class="bu">str</span>(y)<span class="op">+</span><span class="st">&#39; keV&#39;</span> <span class="cf">for</span> x,y <span class="kw">in</span> <span class="bu">zip</span>(hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_low&#39;</span>],hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_high&#39;</span>])]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># read energy information</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>energy_edges <span class="op">=</span> [e_low<span class="op">+</span>(e_high<span class="op">-</span>e_low) <span class="cf">for</span> chn,e_low,e_high <span class="kw">in</span> hdulist[<span class="dv">3</span>].data]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>energy_edges.insert(<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>mean_energy <span class="op">=</span> [(e_high<span class="op">+</span>e_low)<span class="op">/</span><span class="dv">2</span> <span class="cf">for</span> chn,e_low,e_high <span class="kw">in</span> hdulist[<span class="dv">3</span>].data]</span></code></pre></div>
+<p>Create time array</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_seconds_datetime(sod_i,date_obs):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">&#39;&#39;&#39; </span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Function takes in seconds of day and the date of the observation as argument and returns</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">    a datetime object in a specified format</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">    &#39;&#39;&#39;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> fmt <span class="kw">in</span> (<span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%S.</span><span class="sc">%f</span><span class="st">&#39;</span>, <span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%S&#39;</span>):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> datetime.strptime(date_obs,fmt)<span class="op">+</span>timedelta(seconds<span class="op">=</span>sod_i)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>map_func <span class="op">=</span> partial(convert_seconds_datetime, date_obs<span class="op">=</span>hdulist[<span class="dv">0</span>].header[<span class="st">&#39;DATE_BEG&#39;</span>])</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>time_arr <span class="op">=</span> np.asarray(<span class="bu">list</span>(<span class="bu">map</span>(map_func,time_sod)))</span></code></pre></div>
+<p>Produce lightcurves of counts summed on all pixels for each detectors:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>counts_det <span class="op">=</span> counts.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>Plot lightcurves for all detectors, in the second energy band</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>eband<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>counts_det_oneband <span class="op">=</span> counts_det[:,:,eband]</span></code></pre></div>
+<p>Plot the count lightcurves for each detector in one energy band:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> plt_dates</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mticker</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>hxr_dates <span class="op">=</span> plt_dates.date2num(time_arr)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>hxr_counts <span class="op">=</span> counts_det_oneband</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">8</span>),facecolor<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> fig.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> plt.get_cmap(<span class="st">&#39;turbo&#39;</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>num_colors <span class="op">=</span> counts_det_oneband.shape[<span class="dv">1</span>]</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>dets <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">27</span>,<span class="dv">28</span>,<span class="dv">29</span>,<span class="dv">30</span>,<span class="dv">31</span>,<span class="dv">32</span>]</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">&#39;detector &#39;</span><span class="op">+</span><span class="bu">str</span>(ii) <span class="cf">for</span> ii <span class="kw">in</span> dets]</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chan <span class="kw">in</span> <span class="bu">range</span>(hxr_counts.shape[<span class="dv">1</span>]):</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> axes.plot(hxr_dates,hxr_counts[:,chan],label<span class="op">=</span>labels[chan])</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    lines[<span class="dv">0</span>].set_color(cm(<span class="fl">1.</span><span class="op">*</span>chan<span class="op">/</span>num_colors))</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>axes.minorticks_on()</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>axes.yaxis.set_minor_locator(mticker.MultipleLocator(<span class="dv">5</span>))</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>axes.set_yscale(<span class="st">&quot;log&quot;</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>axes.set_ylabel(<span class="st">&#39;counts&#39;</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>axes.yaxis.grid(<span class="va">True</span>, <span class="st">&#39;major&#39;</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>date_format <span class="op">=</span> plt_dates.DateFormatter(<span class="st">&#39;%H:%M&#39;</span>)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>axes.xaxis.set_major_formatter(date_format)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>axes.text(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.2</span>, datetime.date(time_arr[<span class="dv">0</span>]).strftime(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">/%m/%Y&quot;</span>), ha<span class="op">=</span><span class="st">&#39;center&#39;</span>, va<span class="op">=</span><span class="st">&#39;center&#39;</span>,</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>axes.transAxes)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>axes.set_title(energy_labels[eband])</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>axes.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>))</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p>This will produce the following figure:</p>
+<p><img src="Hands-on_figures/python_counts_per_detectors.PNG" alt="" width="350"/></p>
+<p>Calculate the count rate:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>timedel <span class="op">=</span> hdulist[<span class="dv">2</span>].data.field(<span class="st">&#39;timedel&#39;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>count_rate <span class="op">=</span> counts<span class="op">/</span>timedel[:,<span class="va">None</span>,<span class="va">None</span>,<span class="va">None</span>]</span></code></pre></div>
+<p>Sum over pixels, then detectors:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>summed_count_rates <span class="op">=</span> count_rate.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Plot summed count rates in all energy bands</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">8</span>),facecolor<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> fig.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> plt.get_cmap(<span class="st">&#39;turbo&#39;</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>num_colors <span class="op">=</span> summed_count_rates.shape[<span class="dv">1</span>]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chan <span class="kw">in</span> <span class="bu">range</span>(summed_count_rates.shape[<span class="dv">1</span>]):</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> axes.plot(hxr_dates,summed_count_rates[:,chan],label<span class="op">=</span>energy_labels[chan])</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    lines[<span class="dv">0</span>].set_color(cm(<span class="fl">1.</span><span class="op">*</span>chan<span class="op">/</span>num_colors))</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>axes.minorticks_on()</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>axes.yaxis.set_minor_locator(mticker.MultipleLocator(<span class="dv">5</span>))</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>axes.set_yscale(<span class="st">&quot;log&quot;</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>axes.set_ylabel(<span class="st">&#39;counts/s&#39;</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>axes.yaxis.grid(<span class="va">True</span>, <span class="st">&#39;major&#39;</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>date_format <span class="op">=</span> plt_dates.DateFormatter(<span class="st">&#39;%H:%M&#39;</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>axes.xaxis.set_major_formatter(date_format)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>axes.text(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.2</span>, datetime.date(time_arr[<span class="dv">0</span>]).strftime(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">/%m/%Y&quot;</span>), ha<span class="op">=</span><span class="st">&#39;center&#39;</span>, va<span class="op">=</span><span class="st">&#39;center&#39;</span>,</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>axes.transAxes)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>axes.set_title(<span class="st">&#39;Summed count rates&#39;</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>axes.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>))</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Hands-on_figures/python_count_rate_per_energy_bin.PNG" alt="" width="350"/></p>
+<p>To produce lightcurves in larger energy bands, for instance two lightcurves in ranges 5-7 keV and 14-28 keV:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>e_low <span class="op">=</span> <span class="dv">5</span> <span class="co">#keV</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>e_high <span class="op">=</span> <span class="dv">7</span> <span class="co">#keV</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>energy_idx <span class="op">=</span> np.where((hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_low&#39;</span>]<span class="op">&gt;=</span>e_low) <span class="op">&amp;</span> (hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_high&#39;</span>]<span class="op">&lt;=</span>e_high))[<span class="dv">0</span>]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>count_rate_thermal <span class="op">=</span> count_rate[:,:,:,energy_idx].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>e_low <span class="op">=</span> <span class="dv">14</span> <span class="co">#keV</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>e_high <span class="op">=</span> <span class="dv">28</span> <span class="co">#keV</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>energy_idx <span class="op">=</span> np.where((hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_low&#39;</span>]<span class="op">&gt;=</span>e_low) <span class="op">&amp;</span> (hdulist[<span class="dv">3</span>].data[<span class="st">&#39;e_high&#39;</span>]<span class="op">&lt;=</span>e_high))[<span class="dv">0</span>]</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>count_rate_nonthermal <span class="op">=</span> count_rate[:,:,:,energy_idx].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Plot them:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>),facecolor<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> fig.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>imagetime1 <span class="op">=</span> datetime(<span class="dv">2021</span>,<span class="dv">11</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">28</span>,<span class="dv">0</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>imagetime2 <span class="op">=</span> datetime(<span class="dv">2021</span>,<span class="dv">11</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">29</span>,<span class="dv">0</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> axes.plot(hxr_dates,count_rate_thermal,label<span class="op">=</span><span class="st">&#39;5-7 keV&#39;</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>lines[<span class="dv">0</span>].set_color(<span class="st">&#39;red&#39;</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> axes.plot(hxr_dates,count_rate_nonthermal,label<span class="op">=</span><span class="st">&#39;14-28 keV&#39;</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>lines[<span class="dv">0</span>].set_color(<span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>axes.minorticks_on()</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>axes.yaxis.set_minor_locator(mticker.MultipleLocator(<span class="dv">5</span>))</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>axes.set_yscale(<span class="st">&quot;log&quot;</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>axes.set_ylabel(<span class="st">&#39;counts/s&#39;</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>axes.yaxis.grid(<span class="va">True</span>, <span class="st">&#39;major&#39;</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>date_format <span class="op">=</span> plt_dates.DateFormatter(<span class="st">&#39;%H:%M&#39;</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>axes.xaxis.set_major_formatter(date_format)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>axes.text(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.2</span>, datetime.date(time_arr[<span class="dv">0</span>]).strftime(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">/%m/%Y&quot;</span>), ha<span class="op">=</span><span class="st">&#39;center&#39;</span>, va<span class="op">=</span><span class="st">&#39;center&#39;</span>,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>axes.transAxes)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>axes.set_title(<span class="st">&#39;Summed count rates&#39;</span>)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;best&#39;</span>)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span>imagetime1, linestyle<span class="op">=</span><span class="st">&#39;--&#39;</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span>imagetime2, linestyle<span class="op">=</span><span class="st">&#39;--&#39;</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Hands-on_figures/python_count_rates_low_high.PNG" alt="" width="350"/></p>
+<h2 id="imaging">Imaging <a href="#content">↑</a></h2>
+<h3 id="creating-images-from-level-1-data-idl">Creating images from level 1 data (IDL) <a href="#content">↑</a></h3>
+<p>Note that a demo script for imaging with STIX data is available in the SolarSoft: <code>demo_imaging.pro</code>. You can follow and run this script on your own after this tutorial. Today we will do something similar but applied to the flare we selected above.</p>
+<blockquote>
+<p><strong><em>Goal of the tutorial: produce a STIX image</em></strong></p>
+</blockquote>
+<ol type="1">
+<li>Set path to the data</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_dir = &#39;data/&#39; ; change this to the path to the STIX data on your machine</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>path_sci_file = data_dir+&#39;solo_L1A_stix-sci-xray-l1-2111010024_20211101T010049-20211101T023158_017507_V01.fits&#39;</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>path_bkg_file = data_dir+&#39;solo_L1A_stix-sci-xray-l1-2111010016_20211101T100013-20211101T114013_017219_V01.fits&#39;</span></code></pre></div>
+<ol start="2" type="1">
+<li>Set image parameters</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>time_range = [&#39;1-Nov-2021 01:28:00&#39;, &#39;1-Nov-2021 01:29:00&#39;] ; Time range to consider</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>energy_range = [5,7]       ; Energy range to consider (keV)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>mapcenter = [1100, -300] ; Coordinates of the center of the map to reconstruct (quasi-heliocentric): these are a proxy taken from the coarse flare location in the quicklook data for the flare</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>xy_flare = mapcenter      ; Location of the map (quasi-heliocentric). Needed for the visibility phase calibration</span></code></pre></div>
+<ol start="3" type="1">
+<li>Reconstruct vibilities from pixel measurements</li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>vis=stix2vis_sep2021(path_sci_file, time_range, energy_range, mapcenter, path_bkg_file=path_bkg_file, $</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  subc_index=subc_index, xy_flare=xy_flare, pixels=pixels)</span></code></pre></div>
+<p>This will create three plots:</p>
+<p><img src="Hands-on_figures/idl_imaging_visibilities.PNG" /></p>
+<p>In the <code>IDL 0</code> plot window, the reconstructed moiré patterns for each collimator is displayed. Each subcollimator corresponds to an orientation and a spatial resolution that are indicated. We can see that the collimators with the three finest resolutions (7“, 10”, 14“) do not show any modulation over the pixels: this means that the image does not contain structure at these resolution, and these subcollimators can be ignored in the image reconstruction as they will not add any information, but add noise. The collimators with resolution 20” have almost no modulation too and one could choose to exclude them as well from the analysis. This is also why the error bars are important for these resolutions in the <code>IDL 3</code> plot showing the amplitude of the visibilities as a function of resolution.</p>
+<ol start="4" type="1">
+<li>Set image parameters</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>imsize    = [149, 149]    ; number of pixels of the map to recinstruct</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>pixel     = [5.,5.]       ; pixel size in arcsec</span></code></pre></div>
+<ol start="5" type="1">
+<li>Make backprojection images</li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>stx_show_bproj,vis,imsize=imsize,pixel=pixel,out=bp_map,scaled_out=scaled_out</span></code></pre></div>
+<p><img src="Hands-on_figures/idl_imaging_bproj_1.PNG" alt="" width="200"/></p>
+<p>This plot windows displays the spatial modulation calculated from each sub-collimators: each line show the modulation for 3 collimators with same resolution and different orientation, the last row being the combination of the three. The first line show the subcollimators with the coarser resolution, then decreasing to finer resolution row by row (the last two sets of subcollimators are excluded so far).</p>
+<p><img src="Hands-on_figures/idl_imaging_bproj_2.PNG" /></p>
+<p>Backprojection images calculated with natural weighting (first line) and uniform weighting (second line). The first row shows the image calculated with the three sub-collimators with the coarser resolution and then each line is the previous image to which the next three sub-collimators are added.</p>
+<p>We can produce two maps containing the backprojection images with the different weights:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>; BACKPROJECTION natural weighting</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>bp_nat_map = stx_bproj(vis,imsize,pixel)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>; BACKPROJECTION uniform weighting</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>bp_uni_map = stx_bproj(vis,imsize,pixel,/uni)</span></code></pre></div>
+<ol start="6" type="1">
+<li>CLEAN image</li>
+</ol>
+<p>We can use the CLEAN iterative algorithm to produce an image of the source (clean the backprojection image from the instrument response). This is only one of the available image reconstruction algorithms available.<br />
+The output is a cube containing 5 maps:<br />
+- index 0: CLEAN map<br />
+- index 1: Backprojection map<br />
+- index 2: Residual map<br />
+- index 3: CLEAN component map<br />
+- index 4: CLEAN map without residuals added</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>niter  = 200    ;number of iterations</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>gain   = 0.1    ;gain used in each clean iteration</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>nmap   = 20   ;only every 20th integration is shown in plot</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>beam_width = 20.</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>clean_map = stx_vis_clean(vis,niter=niter,image_dim=imsize[0],PIXEL=pixel[0],uni=0,gain=0.1,nmap=nmap,/plot,/set, beam_width=beam_width)</span></code></pre></div>
+<p>This command will open an interactive window. The user has to specify a CLEAN box. The circle tool is preselected here and will be used: use the mouse to encapsulate the source in the backprojection image with the circle, right click when you are happy with the selection. Then validate, the CLEAN iterative algorithm will start in a window and iteratively identify CLEAN component used to calculate the image and the residuals. At the end of the process a summary plot appears:</p>
+<p><img src="Hands-on_figures/idl_imaging_clean_result.PNG" /></p>
+<p>Save the map cube into a fits file:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>map2fits, clean_map, &#39;clean_20211101_012830_5-7kev.fits&#39;</span></code></pre></div>
+<blockquote>
+<p>Do the same for the 14-28 keV range, and save it under the name <code>'clean_20211101_012830_14-28kev.fits'</code></p>
+</blockquote>
+<blockquote>
+<p><strong><em>Extra challenge</em></strong><br />
+Select a flare which was observed by both STIX and EUI to superimpose STIX contours on EUI images. For instance, check the press release from last week: <a href="https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter">Solar flare rises from the limb</a></p>
+</blockquote>
+<h3 id="plotting-images-with-idl">Plotting images with IDL <a href="#content">↑</a></h3>
+<p>In IDL, we will use the <a href="https://hesperia.gsfc.nasa.gov/rhessidatacenter/complementary_data/maps/">IDL maps</a> to manipulate and plot STIX images.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fits2map, &#39;data/clean_20211101_012830_5-7kev.fits&#39;, map1</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>fits2map, &#39;data/clean_20211101_012830_14-28kev.fits&#39;, map2</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>loadct,5</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>plot_Map, map1[0], xr=[800,1100], yr=[-450,-150], grid_spacing=10, /limb</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>linecolors</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>plot_Map, map2[0], /over, levels=[0.5,0.7,0.9]*max(map2[0].data), thick=2, color=9</span></code></pre></div>
+<p><img src="Hands-on_figures/idl_image_cont.PNG" alt="" width="350"/></p>
+<h3 id="plotting-images-with-python">Plotting images with Python <a href="#content">↑</a></h3>
+<p>Download fits files from STIX data center</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> wget</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>download_location <span class="op">=</span> <span class="st">&#39;.&#39;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>fits_urls <span class="op">=</span> [<span class="st">&#39;https://datacenter.stix.i4ds.net/image-archive/2111010024/stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_bp_map.fits&#39;</span>, <span class="st">&#39;https://datacenter.stix.i4ds.net/image-archive/2111010024/stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_vis_fwdfit_map.fits&#39;</span>, <span class="st">&#39;https://datacenter.stix.i4ds.net/image-archive/2111010024/stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_em_map.fits&#39;</span>, <span class="st">&#39;https://datacenter.stix.i4ds.net/image-archive/2111010024/stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_clean_map.fits&#39;</span>, <span class="st">&#39;https://datacenter.stix.i4ds.net/image-archive/2111010024/stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_full_disk_bp_map.fits&#39;</span>]</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>filenames <span class="op">=</span> [wget.download(url, out<span class="op">=</span>download_location) <span class="cf">for</span> url <span class="kw">in</span> fits_urls]</span></code></pre></div>
+<p>Alternatively, load maps that you previously downloaded with the tutorial:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data_folder <span class="op">=</span> <span class="st">&#39;data/QL-image/&#39;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>filenames <span class="op">=</span> [data_folder<span class="op">+</span><span class="st">&#39;stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_bp_map.fits&#39;</span>, data_folder<span class="op">+</span><span class="st">&#39;stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_vis_fwdfit_map.fits&#39;</span>, data_folder<span class="op">+</span><span class="st">&#39;stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_em_map.fits&#39;</span>, data_folder<span class="op">+</span><span class="st">&#39;stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_clean_map.fits&#39;</span>, data_folder<span class="op">+</span><span class="st">&#39;stix_ql_image_sci_5316_uid_2111010024_4-10keV_20211101T013654_1938_full_disk_bp_map.fits&#39;</span>]</span></code></pre></div>
+<p><strong>Important: the “preview images” downloaded from the STIX Data Center should not be used for publication. They can be used as quicklooks.</strong></p>
+<p>Second alternative, load maps that have been created with IDL (see previous section) and available with the tutorial:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data_folder <span class="op">=</span> <span class="st">&#39;data/Processed-data/&#39;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>filenames <span class="op">=</span> [data_folder<span class="op">+</span><span class="st">&#39;clean_20211101_012830_5-7kev.fits&#39;</span>, data_folder<span class="op">+</span><span class="st">&#39;clean_20211101_012830_14-28kev.fits&#39;</span>]</span></code></pre></div>
+<p>Define units</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> astropy <span class="im">import</span> units <span class="im">as</span> u</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>u.add_enabled_units(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    [u.def_unit(<span class="st">&quot;arcsecs&quot;</span>, <span class="dv">1</span> <span class="op">*</span> u.arcsec),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>     u.def_unit(<span class="st">&quot;meters&quot;</span>, <span class="dv">1</span> <span class="op">*</span> u.m)])</span></code></pre></div>
+<p>Create a map and plot it</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sunpy</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sunpy.<span class="bu">map</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>maps <span class="op">=</span> sunpy.<span class="bu">map</span>.Map(filenames)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;total number of maps: </span><span class="sc">{</span><span class="bu">len</span>(maps)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting images using sunpy.map</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> maps:</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    m.plot(cmap<span class="op">=</span><span class="st">&quot;std_gamma_2&quot;</span>)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    m.draw_grid(color<span class="op">=</span><span class="st">&#39;w&#39;</span>, ls<span class="op">=</span><span class="st">&#39;--&#39;</span>, grid_spacing<span class="op">=</span><span class="dv">10</span> <span class="op">*</span> u.deg)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    m.draw_limb(color<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p>9 maps will be plotted:<br />
+- backprojection image<br />
+- forward fit image<br />
+- EM image<br />
+- CLEAN image<br />
+- backprojection image<br />
+- CLEAN residual image<br />
+- CLEAN component image<br />
+- CLEAN image without residuals added<br />
+- Full-disk image</p>
+<h2 id="spectroscopy-idl">Spectroscopy (IDL) <a href="#content">↑</a></h2>
+<p>Spectroscopy with STIX data relies on the OSPEX package that was developed in the SolarSoft to analyse RHESSI data. There are therefore two steps for the spectral analysis of STIX observations: 1. Format the STIX data into a spectrum file and a response matrix that can be read by OSPEX 2. Open these files in OSPEX can perform the spectral analysis</p>
+<p>In this tutorial will we perform STIX spectral analysis using a spectrogram (L4) data file.</p>
+<p>Set up the path to the data:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data_dir = &#39;data/&#39; ; change this to the path to the STIX data on your machine</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>fits_path = data_dir+&#39;solo_L1A_stix-sci-spectrogram-2111010001_20211101T003900-20211101T032545_055094_V01.fits&#39;</span></code></pre></div>
+<h3 id="preparing-stix-data-for-ospex">Preparing STIX data for OSPEX <a href="#content">↑</a></h3>
+<p>First, we need to get the ephemeris needed for spectroscopy. These include the distance between Solar Orbiter and the Sun, and the associated time shift (compared to observations at 1 a.u.). These informations are present in the header of the STIX data and can be extracted using:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>stx_get_header_corrections, fits_path, distance = distance, time_shift = time_shift</span></code></pre></div>
+<p>Then the spectrum and matrix can be created with:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>stx_convert_spectrogram, fits_path_data=fits_path, distance=mean_distance, time_shift=mean_time_shift, ospex_obj=ospex_obj</span></code></pre></div>
+<p>The above line will write a spectrum file (<code>stx_spectrum_20211101_0039.fits</code>) and a response file (<code>stx_srm_20211101_0039.fits</code>) in your working directory; and open an OSPEX object with these two inputs:</p>
+<p><img src="Hands-on_figures/idl_spex_fig1.PNG" alt="" width="350"/></p>
+<h3 id="spectral-analysis-in-ospex">Spectral analysis in OSPEX <a href="#content">↑</a></h3>
+<p>OSPEX is a package of the SolarSoft developed to analyze solar X-ray spectra. The documentation of the package can be found here: <a href="https://hesperia.gsfc.nasa.gov/ssw/packages/spex/doc/ospex_explanation.htm">https://hesperia.gsfc.nasa.gov/ssw/packages/spex/doc/ospex_explanation.htm</a> Without entering the details of a spectral analysis, here are the steps to follow: - choose a time interval to calculate the background flux - choose a time interval to fit - choose an energy range to fit - choose fit functions, usually at least one thermal component (<code>vth</code>) and one non-thermal component (for instance a single power law, <code>1pow</code>).</p>
+<p>The script below gives an idea of what to do: many other parameters can be tuned during the spectral analysis.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>obj = ospex()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_specfile= &#39;stx_spectrum_20211101_0039.fits&#39;</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_drmfile= &#39;stx_srm_20211101_0039.fits&#39;</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_erange= [4.00000, 84.000]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_fit_time_interval= [&#39;01-Nov-2021 01:28:00&#39;, &#39;01-Nov-2021 01:29:00&#39;]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_bk_time_interval=[&#39;01-Nov-2021 03:10:00&#39;, &#39;01-Nov-2021 03:15:00&#39;]                          </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, fit_function= &#39;vth+1pow&#39;</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>obj-&gt; set, spex_autoplot_units= &#39;Flux&#39;</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>obj -&gt; dofit, /all</span></code></pre></div>
+<p>Press “Fit”, you can obtain the result displayed below:</p>
+<p><img src="Hands-on_figures/idl_spex_fit.PNG" alt="" width="350"/></p>
+</body>
+</html>
