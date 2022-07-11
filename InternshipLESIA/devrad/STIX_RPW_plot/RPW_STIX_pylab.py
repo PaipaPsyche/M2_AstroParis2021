@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 ## MATH
 from scipy.optimize import curve_fit as cfit
 import numpy as np
-from spacepy import pycdf
+
 
 ## GUI
 from ipywidgets import interact, interactive, widgets, fixed,interact_manual,FloatSlider
@@ -43,7 +43,8 @@ from astropy.time.core import Time, TimeDelta
 from astropy.table import Table, vstack, hstack
 import astropy.units as u
 
-
+os.environ["CDF_LIB"] = "/home/localuser/Documents/CDF/src/lib"
+from spacepy import pycdf
 
 
 
@@ -75,7 +76,7 @@ class solar_event:
     def __init__(self,event_type,times,color=None,linestyle="-",linewidth=2,hl_alpha=0.4,paint_in=None,date_fmt=std_date_fmt):
         self.type = event_type
         #interval,stix_flare,rpw_burst
-        try:656,673
+        try:
             self.start_time = dt.datetime.strptime(times['start'],date_fmt)
         except:
             self.start_time = None
@@ -92,7 +93,7 @@ class solar_event:
         #    self.end_time = times['end'] if  times['end'] else None
         #self.peak_time = times['peak'] if  times['peak'] else None
         self.color = color
-        sel    from spacepy import pycdff.linestyle=linestyle
+        self.linestyle=linestyle
         self.linewidth=linewidth
         self.hl_alpha=hl_alpha
         self.paint_in=paint_in
@@ -131,9 +132,8 @@ class solar_event:
 
 def rpw_read_hfr_cdf(filepath, sensor=9, start_index=0, end_index=-99):
     
-    os.environ["CDF_LIB"] = "/home/localuser/Documents/CDF/src/lib"
-
-    import datetime
+    
+    #import datetime
 
     with pycdf.CDF ( filepath ) as l2_cdf_file:
 
@@ -449,12 +449,12 @@ def stix_create_counts(pathfile, is_bkg=False,time_arr=None,correct_flight_time=
 
 
 
-def stix_remove_bkg_counts(pathfile,pathbkg):
+def stix_remove_bkg_counts(pathfile,pathbkg,correct_flight_time = False):
     
     #import L1 data
     data_L1 = stix_create_counts(pathfile)
     #import BKG data
-    data_BKG = stix_create_counts(pathbkg,is_bkg=True, time_arr=data_L1["time"])
+    data_BKG = stix_create_counts(pathbkg,is_bkg=True, time_arr=data_L1["time"],correct_flight_time =correct_flight_time )
     
     #subtract background 
     data_counts_per_sec_nobkg = data_L1["counts_per_sec"]-data_BKG["counts_per_sec"] 
